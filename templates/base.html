@@ -1,0 +1,101 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title_block %} Bootstrap demo {% endblock %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+<style>
+  .card {
+    height: 350px;
+  }
+  .card-product:after {
+    content: "";
+    display: table;
+    clear: both;
+    visibility: hidden;
+  }
+
+  .card-product .price-new, card-product .price {
+    margin-right: 5px;
+  }
+
+  .card-product .price-old{
+    color: #999;
+  }
+  .card-product .img-wrap {
+    border-radius: 3px 3px 0 0;
+    overflow:hidden;
+    position: relative;
+    height: 220px;
+    text-align: center;
+  }
+
+  .card-product .img-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .card-product .info-wrap {
+    overflow: hidden;
+    padding: 15px;
+    border-top: 1px solid #eee;
+  }
+
+  .card-product .action-wrap {
+    padding-top: 4px;
+    margin-top: 4px;
+
+  }
+
+  .card-product .bottom-wrap {
+    padding: 15px;
+    border-top: 1px solid #eee;
+  }
+
+  .card-product .title {
+    margin-top: 0px;
+  }
+
+</style>
+
+
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    <div class="container" style="padding-top:20px">
+
+      <div class="messages container mt-2">
+        {% if messages %}
+          {% for message in messages %}
+          <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %} role="alert">
+            {{ message}}
+            <button type="button" class="close" data-dismiss="alert" aria-level="Close">
+              <span aria-hidden="true"> &times; </span>
+            </button>
+          </div>
+          {% endfor %}
+        {% endif %}
+
+      </div>
+
+
+
+        {% block body_block %}
+
+        {% endblock %}
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+  </body>
+</html>
